@@ -20,17 +20,22 @@ var connection = mysql.createConnection({
 //     database: 'Golf'
 // });
 
-app.use(cors());
+connection.connect();
 
-app.get('/api', (req, res) => {
-    connection.connect();
-    connection.query('CALL spGetTopRankedPlayer()', (error, results, fields) => {
+async function getTopRankedPlayer(req, res) {
+    await connection.query('CALL spGetTopRankedPlayer()', (error, results, fields) => {
         if (error) {
             return console.error(error.message);
         } else {
             res.send(results[0])
         }
     });
+}
+
+app.use(cors());
+
+app.get('/api', (req, res) => {
+    getTopRankedPlayer(req, res);
 });
 
 app.listen(port, () => {
