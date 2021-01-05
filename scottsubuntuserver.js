@@ -5,20 +5,12 @@ const port = 9000;
 const mysql = require("mysql");
 
 // var connection = mysql.createConnection({
-//   host: "localhost",
-//   port: "3306",
-//   user: "superuser",
+//   host: "",
+//   port: "",
+//   user: "",
 //   password: "",
-//   database: "Golf",
+//   database: "",
 // });
-
-var connection = mysql.createConnection({
-  host: "10.0.0.35",
-  port: "3306",
-  user: "remoteuser",
-  password: "",
-  database: "Golf",
-});
 
 connection.connect();
 
